@@ -168,7 +168,9 @@ async function loadManuals() {
       cache: "no-cache",
     });
 
-    if (!response.ok) throw new Error("No se pudieron obtener manuales.");
+    if (!response.ok) {
+      throw new Error(`No se pudieron obtener manuales: ${response.status} ${response.statusText}`);
+    }
 
     const data = await response.json();
     if (!Array.isArray(data.manuals)) throw new Error("Respuesta inválida.");

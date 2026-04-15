@@ -79,6 +79,7 @@ exports.handler = async function handler() {
       body: JSON.stringify({ manuals }),
     };
   } catch (error) {
+    console.error("Error al cargar manuales desde SQLite:", error);
     return {
       statusCode: 500,
       headers: { "content-type": "application/json; charset=utf-8" },
