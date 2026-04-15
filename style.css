@@ -211,6 +211,140 @@ main {
   grid-column: 1 / -1;
 }
 
+/* ===== Manuals Section ===== */
+.manuals-section {
+  margin-top: 4rem;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+.manuals-filter-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.75rem;
+}
+
+#manuals-filter {
+  padding: 0.65rem 1.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 220px;
+}
+
+#manuals-filter:focus {
+  border-color: var(--primary);
+}
+
+/* ===== Manuals Grid ===== */
+.manuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ===== Manual Card ===== */
+.manual-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.manual-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+  border-color: var(--primary);
+}
+
+.manual-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 48px;
+  text-align: center;
+}
+
+.manual-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.manual-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.manual-project {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.manual-developer {
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.manual-link {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 0.35rem 0.85rem;
+  border: 1.5px solid var(--primary);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.manual-link:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Hidden manual cards when filtered out */
+.manual-card.hidden {
+  display: none;
+}
+
+/* ===== No manuals message ===== */
+#no-manuals {
+  display: none;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem 0;
+  font-size: 1rem;
+}
+
 /* ===== Footer ===== */
 footer {
   text-align: center;
