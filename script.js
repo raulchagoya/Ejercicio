@@ -165,7 +165,6 @@ async function loadManuals() {
   try {
     const response = await fetch("/.netlify/functions/manuals", {
       headers: { Accept: "application/json" },
-      cache: "no-cache",
     });
 
     if (!response.ok) {
