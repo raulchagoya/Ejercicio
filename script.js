@@ -32,7 +32,7 @@ const developers = [
  *   url       – Enlace al manual (usa "#" si no hay enlace disponible)
  *   icon      – Emoji o ícono representativo del manual
  */
-const manuals = [
+const fallbackManuals = [
   { title: "Manual de Instalación",      project: "Proyecto Alpha",   developer: "Raúl Chagoya",       url: "#", icon: "🛠️" },
   { title: "Guía de Usuario",            project: "Proyecto Alpha",   developer: "Raúl Chagoya",       url: "#", icon: "📖" },
   { title: "Manual de Componentes UI",   project: "Proyecto Beta",    developer: "Mario Carbajal",     url: "#", icon: "🎨" },
@@ -129,18 +129,6 @@ const manualsGrid = document.getElementById("manuals-grid");
 const noManuals = document.getElementById("no-manuals");
 const manualsFilter = document.getElementById("manuals-filter");
 
-/* Populate developer filter options (unique names from manuals) */
-const developerNames = [...new Set(manuals.map((m) => m.developer))].sort();
-developerNames.forEach((name) => {
-  const option = document.createElement("option");
-  option.value = name.toLowerCase();
-  option.textContent = name;
-  manualsFilter.appendChild(option);
-});
-
-/* Render all manual cards */
-manuals.forEach((manual) => manualsGrid.appendChild(buildManualCard(manual)));
-
 function filterManuals() {
   const selected = manualsFilter.value.toLowerCase();
   const cards = manualsGrid.querySelectorAll(".manual-card");
@@ -156,3 +144,46 @@ function filterManuals() {
 }
 
 manualsFilter.addEventListener("change", filterManuals);
+
+function renderManuals(manuals) {
+  manualsGrid.innerHTML = "";
+  manualsFilter.innerHTML = '<option value="">👤 Todos los developers</option>';
+
+  const developerNames = [...new Set(manuals.map((m) => m.developer))].sort();
+  developerNames.forEach((name) => {
+    const option = document.createElement("option");
+    option.value = name.toLowerCase();
+    option.textContent = name;
+    manualsFilter.appendChild(option);
+  });
+
+  manuals.forEach((manual) => manualsGrid.appendChild(buildManualCard(manual)));
+  filterManuals();
+}
+
+async function loadManuals() {
+  try {
+    const response = await fetch("/.netlify/functions/manuals", {
+      headers: { Accept: "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudieron obtener manuales: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    if (!Array.isArray(data.manuals)) throw new Error("Respuesta inválida.");
+
+    return data.manuals;
+  } catch (error) {
+    console.warn("No se pudieron cargar manuales desde SQLite, usando datos locales.", error);
+    return fallbackManuals;
+  }
+}
+
+async function initManuals() {
+  const manuals = await loadManuals();
+  renderManuals(manuals);
+}
+
+initManuals();
