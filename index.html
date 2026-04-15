@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo de Developers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>👨‍💻 Grupo de Developers</h1>
+    <p>Conoce a los integrantes de nuestro equipo de desarrollo</p>
+    <span class="badge">⚡ Edugem · 2026</span>
+  </header>
+
+  <main>
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="total-count">0</div>
+        <div class="stat-label">Integrantes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">💻</div>
+        <div class="stat-label">Desarrolladores</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">🚀</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+      <input
+        type="search"
+        id="search"
+        placeholder="🔍 Buscar por nombre…"
+        aria-label="Buscar integrante"
+      />
+    </div>
+
+    <!-- Developer cards -->
+    <div class="grid" id="grid">
+      <!-- Cards are injected by script.js -->
+    </div>
+    <p id="no-results">No se encontraron resultados. 😕</p>
+  </main>
+
+  <footer>
+    Hecho con ❤️ por el <span>Grupo de Developers</span> &mdash; Publicado en Netlify
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
