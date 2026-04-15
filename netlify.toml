@@ -1,0 +1,6 @@
+# Netlify configuration
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # This is a plain HTML/CSS/JS site — no build step needed.
+  publish = "."
