@@ -8,8 +8,8 @@
  */
 const developers = [
   { name: "Raúl Chagoya",          role: "Full Stack" },
-  { name: "Andrea López",          role: "Frontend" },
-  { name: "Carlos Mendoza",        role: "Backend" },
+  { name: "Mario Carbajal",          role: "Frontend" },
+  { name: "Alejandro Salinas",        role: "Backend" },
   { name: "Sofía Ramírez",         role: "UI/UX" },
   { name: "Luis García",           role: "Backend" },
   { name: "Valeria Torres",        role: "Frontend" },
