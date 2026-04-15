@@ -175,6 +175,7 @@ async function loadManuals() {
 
     return data.manuals;
   } catch (error) {
+    console.warn("No se pudieron cargar manuales desde SQLite, usando datos locales.", error);
     return fallbackManuals;
   }
 }
