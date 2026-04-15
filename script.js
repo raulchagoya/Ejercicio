@@ -165,7 +165,7 @@ async function loadManuals() {
   try {
     const response = await fetch("/.netlify/functions/manuals", {
       headers: { Accept: "application/json" },
-      cache: "no-store",
+      cache: "no-cache",
     });
 
     if (!response.ok) throw new Error("No se pudieron obtener manuales.");
